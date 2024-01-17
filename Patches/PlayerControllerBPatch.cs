@@ -1,6 +1,7 @@
 ﻿using GameNetcodeStuff;
 using HarmonyLib;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Batteries.Patches
@@ -23,7 +24,7 @@ namespace Batteries.Patches
                 {
                     if (__instance.ItemSlots[i] != null && __instance.ItemSlots[i].itemProperties.itemId == 5601)
                     {
-                        __instance.itemAudio.PlayOneShot(BatteriesMod.useBattery);
+                        __instance.currentlyHeldObjectServer.GetComponent<AudioSource>().PlayOneShot(BatteriesMod.useBattery);
                         __instance.DestroyItemInSlotAndSync(i);
                         if (ConfigManager.batteryChargeAmount.Value < 0f || ConfigManager.batteryChargeAmount.Value > 1f)
                             __instance.currentlyHeldObjectServer.insertedBattery.charge += (float)ConfigManager.batteryChargeAmount.DefaultValue;
