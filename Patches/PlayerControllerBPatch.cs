@@ -12,7 +12,7 @@ namespace Batteries.Patches
         [HarmonyPostfix]
         static void PlayerUpdatePatch(ref PlayerControllerB __instance)
         {
-            if (__instance.currentlyHeldObjectServer == null)
+            if (__instance.currentlyHeldObjectServer == null || __instance.inSpecialInteractAnimation)
                 return;
             int useKey = ConfigManager.useBatteryKeybind.Value;
             if (useKey < 0 || useKey > 111)
@@ -21,7 +21,7 @@ namespace Batteries.Patches
             {
                 for (int i = 0; i < __instance.ItemSlots.Length; i++)
                 {
-                    if (__instance.ItemSlots[i].itemProperties.itemId == 5601)
+                    if (__instance.ItemSlots[i] != null && __instance.ItemSlots[i].itemProperties.itemId == 5601)
                     {
                         __instance.itemAudio.PlayOneShot(BatteriesMod.useBattery);
                         __instance.DestroyItemInSlotAndSync(i);
