@@ -11,7 +11,7 @@ namespace Batteries
     {
         const string mGUID = "eXish.Batteries";
         const string mName = "Batteries";
-        const string mVersion = "1.0.2";
+        const string mVersion = "1.0.3";
 
         readonly Harmony harmony = new Harmony(mGUID);
 
@@ -40,6 +40,7 @@ namespace Batteries
             {
                 useBattery = bundle.LoadAsset<AudioClip>("Assets/Batteries/UseBattery.wav");
                 Item battery = bundle.LoadAsset<Item>("Assets/Batteries/Battery.asset");
+                Utilities.FixMixerGroups(battery.spawnPrefab);
                 NetworkPrefabs.RegisterNetworkPrefab(battery.spawnPrefab);
                 if (ConfigManager.batteryRarity.Value < 1 || ConfigManager.batteryRarity.Value > 100)
                     Items.RegisterScrap(battery, (int)ConfigManager.batteryRarity.DefaultValue, Levels.LevelTypes.All);
