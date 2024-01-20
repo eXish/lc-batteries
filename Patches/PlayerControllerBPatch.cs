@@ -13,7 +13,7 @@ namespace Batteries.Patches
         [HarmonyPostfix]
         static void PlayerUpdatePatch(ref PlayerControllerB __instance)
         {
-            if (__instance.currentlyHeldObjectServer == null || __instance.inSpecialInteractAnimation)
+            if (!__instance.IsOwner || __instance.currentlyHeldObjectServer == null || __instance.inSpecialInteractAnimation)
                 return;
             int useKey = ConfigManager.useBatteryKeybind.Value;
             if (useKey < 0 || useKey > 111)
