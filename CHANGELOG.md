@@ -1,7 +1,7 @@
 ## Batteries [1.0.4]
 - Fixed batteries not saving, despawning, selling for any value, and other shenanigans due to not being marked as scrap
 	- I originally wanted for batteries to be like keys, but making it function as a full scrap seems to fix several issues
-	- Feel free to let me know on Discord if you think it should be like a key or full scrap, I would like it function however the community sees fit
+	- Feel free to let me know on Discord if you think it should be like a key or full scrap, I would like it to function however the community sees fit
 - Fixed the use battery tool tip not being added/removed properly with multiple players
 
 ## Batteries [1.0.3]
