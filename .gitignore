@@ -1,0 +1,10 @@
+*.suo
+*.user
+
+/.vs
+/.idea
+/obj
+/bin
+
+# Prevent uploading game assemblies
+/Lib
