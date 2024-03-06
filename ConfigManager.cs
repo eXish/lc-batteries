@@ -5,7 +5,7 @@ namespace Batteries
     internal class ConfigManager
     {
         // TODO: Add gamepad
-        public const string DEFAULT_KEYBINDS = "<Keyboard>/c,<XRController>{RightHand}/gripButton";
+        public const string DEFAULT_KEYBINDS = "<Keyboard>/c,<Gamepad>/dpad/up,<XRController>{RightHand}/gripButton";
         
         public static ConfigEntry<bool> toolTipEnabled;
         public static ConfigEntry<bool> disableChargingCoil;
