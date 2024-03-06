@@ -2,6 +2,7 @@
 using HarmonyLib;
 using LethalLib.Modules;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Batteries
 {
@@ -25,8 +26,8 @@ namespace Batteries
                 instance = this;
 
             ConfigManager.Init();
-            if (ConfigManager.useBatteryKeybind.Value < 0 || ConfigManager.useBatteryKeybind.Value > 111)
-                instance.Logger.LogWarning($"The value \"{ConfigManager.useBatteryKeybind.Value}\" is not valid for setting \"useBatteryKeybind\"! The default will be used instead.");
+            if (string.IsNullOrEmpty(ConfigManager.useBatteryKeybinds.Value))
+                instance.Logger.LogWarning($"The value \"{ConfigManager.useBatteryKeybinds.Value}\" is not valid for setting \"useBatteryKeybind\"! The default will be used instead.");
             if (ConfigManager.batteryChargeAmount.Value < 0f || ConfigManager.batteryChargeAmount.Value > 1f)
                 instance.Logger.LogWarning($"The value \"{ConfigManager.batteryChargeAmount.Value}\" is not valid for setting \"batteryChargeAmount\"! The default will be used instead.");
             if (ConfigManager.batteryRarity.Value < 0 || ConfigManager.batteryRarity.Value > 100)
@@ -48,6 +49,7 @@ namespace Batteries
                     Items.RegisterScrap(battery, ConfigManager.batteryRarity.Value, Levels.LevelTypes.All);
                 if (ConfigManager.batteryShopValue.Value > 0)
                 {
+                    UnityEngine.InputSystem.InputControlPath.ToHumanReadableString("<XRController>{RightHand}/gripButton", UnityEngine.InputSystem.InputControlPath.HumanReadableStringOptions.UseShortNames);
                     TerminalNode node = ScriptableObject.CreateInstance<TerminalNode>();
                     node.clearPreviousText = true;
                     node.displayText = "Are you tired of having to travel all the way back to your ship to charge equipment? Well fear not! Durable's new battery line will solve all your charging needs! Get the power you deserve right when you need it!\n\nDurable is not responsible for any injury or death caused by our product. All items purchased are non-refundable.\n\n";
