@@ -1,3 +1,15 @@
+## Batteries [1.1.0]
+- Batteries now spawn outside of the scrap pool and work just like keys
+	- Added config value batteryMaxSpawns which determines the maximum number of batteries that can spawn per moon
+	- The spawning system currently generates a random number from 1-150 batteryMaxSpawns times and if batteryRarity is greater or equal it spawns
+	- Feel free to let me know if this should be tweaked or given more configurability on Discord
+- Revamped the entire use battery system to support controller and VR thanks to DaXcess
+	- Removed the useBatteyKeybind config value
+	- Added the useBatteryKeybinds config value which is a string instead of an integer
+	**- Note that any custom keybind you had set before must be manually transferred to the new config value**
+- Fixed batteries purchased from the shop having a scrap value
+- Fixed a bug where you could not turn on an empty flashlight after using a battery on it
+
 ## Batteries [1.0.5]
 - Natural spawning of batteries can now be disabled by setting the batteryRarity config value to 0
 - Batteries can now be configured to appear in the shop with a price as defined by the batteryShopValue config value

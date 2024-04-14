@@ -18,7 +18,7 @@ namespace Batteries
             if (string.IsNullOrEmpty(ConfigManager.useBatteryKeybinds.Value))
                 ConfigManager.useBatteryKeybinds.Value = ConfigManager.DEFAULT_KEYBINDS;
             
-            foreach (var bindingPath in ConfigManager.useBatteryKeybinds.Value.Split(","))
+            foreach (var bindingPath in ConfigManager.useBatteryKeybinds.Value.Split(','))
             {
                 ReloadBatteryAction.AddBinding(bindingPath);
             }
@@ -48,7 +48,7 @@ namespace Batteries
             {
                 for (int i = 0; i < player.ItemSlots.Length; i++)
                 {
-                    if (player.ItemSlots[i] != null && player.ItemSlots[i].itemProperties.itemId == 5601)
+                    if (player.ItemSlots[i] != null && (player.ItemSlots[i].itemProperties.itemId == 5601 || player.ItemSlots[i].itemProperties.itemId == 5602))
                     {
                         player.currentlyHeldObjectServer.GetComponent<AudioSource>().PlayOneShot(BatteriesMod.useBattery);
                         player.DestroyItemInSlotAndSync(i);
@@ -58,6 +58,8 @@ namespace Batteries
                             player.currentlyHeldObjectServer.insertedBattery.charge += ConfigManager.batteryChargeAmount.Value;
                         if (player.currentlyHeldObjectServer.insertedBattery.charge > 1f)
                             player.currentlyHeldObjectServer.insertedBattery.charge = 1f;
+                        if (player.currentlyHeldObjectServer.insertedBattery.empty)
+                            player.currentlyHeldObjectServer.insertedBattery.empty = false;
                         break;
                     }
                 }

@@ -23,18 +23,23 @@ namespace Batteries.Patches
                      wasUsingController != StartOfRound.Instance.localPlayerUsingController) && BatteryInInventory())
                 {
                     var binding =
-                        BatteryManager.Instance.ReloadBatteryAction.bindings.FirstOrDefault(binding => binding.path
+                        BatteryManager.Instance.ReloadBatteryAction.bindings.FirstOrDefault(x => x.path
                             .ToLowerInvariant().Contains(
                                 StartOfRound.Instance.localPlayerUsingController ? "<gamepad>" : "<keyboard>"
                             ));
 
                     var bindingText = binding == default ? "?" : binding.ToDisplayString();
 
-                    __instance.currentlyHeldObjectServer.itemProperties.toolTips =
-                    [
-                        ..__instance.currentlyHeldObjectServer.itemProperties.toolTips.Where(x => !x.StartsWith("Use Battery : [")),
-                        $"Use Battery : [{bindingText}]"
-                    ];
+                    string[] toolTips = __instance.currentlyHeldObjectServer.itemProperties.toolTips;
+                    string[] newToolTips = new string[toolTips.Length + 1];
+                    for (int i = 0; i < newToolTips.Length; i++)
+                    {
+                        if (i != newToolTips.Length - 1)
+                            newToolTips[i] = toolTips[i];
+                        else
+                            newToolTips[i] = $"Use Battery : [{bindingText}]";
+                    }
+                    __instance.currentlyHeldObjectServer.itemProperties.toolTips = newToolTips;
 
                     HUDManager.Instance.ClearControlTips();
                     __instance.currentlyHeldObjectServer.SetControlTipsForItem();
@@ -54,7 +59,7 @@ namespace Batteries.Patches
 
         private static bool BatteryInInventory()
         {
-            return StartOfRound.Instance.localPlayerController.ItemSlots.Any(x => x && x.itemProperties.itemId == 5601);
+            return StartOfRound.Instance.localPlayerController.ItemSlots.Any(x => x && (x.itemProperties.itemId == 5601 || x.itemProperties.itemId == 5602));
         }
         
         private static bool BatteryTooltipShown()
