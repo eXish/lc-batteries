@@ -6,7 +6,7 @@
 - Revamped the entire use battery system to support controller and VR thanks to DaXcess
 	- Removed the useBatteyKeybind config value
 	- Added the useBatteryKeybinds config value which is a string instead of an integer
-	**- Note that any custom keybind you had set before must be manually transferred to the new config value**
+	- **Note that any custom keybind you had set before must be manually transferred to the new config value**
 - Fixed batteries purchased from the shop having a scrap value
 - Fixed a bug where you could not turn on an empty flashlight after using a battery on it
 
