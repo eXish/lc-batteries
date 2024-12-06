@@ -11,7 +11,7 @@ namespace Batteries
     {
         const string mGUID = "eXish.Batteries";
         const string mName = "Batteries";
-        const string mVersion = "1.1.0";
+        const string mVersion = "1.1.1";
 
         readonly Harmony harmony = new Harmony(mGUID);
 

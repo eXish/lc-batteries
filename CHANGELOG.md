@@ -1,3 +1,6 @@
+## Batteries [1.1.1]
+- Changed batteries to no longer be conductive as it made the stormy weather system throw errors
+
 ## Batteries [1.1.0]
 - Batteries now spawn outside of the scrap pool and work just like keys
 	- Added config value batteryMaxSpawns which determines the maximum number of batteries that can spawn per moon
