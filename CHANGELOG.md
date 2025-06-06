@@ -1,3 +1,6 @@
+## Batteries [1.1.2]
+- Fixed game getting stuck loading on V70+ due to the spawn position method being changed
+
 ## Batteries [1.1.1]
 - Changed batteries to no longer be conductive as it made the stormy weather system throw errors
 

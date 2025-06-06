@@ -25,7 +25,7 @@ namespace Batteries.Patches
                     if (rando <= rarity)
                     {
                         int rando2 = __instance.AnomalyRandom.Next(0, __instance.insideAINodes.Length);
-                        Vector3 randomNavMeshPositionInBoxPredictable = __instance.GetRandomNavMeshPositionInBoxPredictable(__instance.insideAINodes[rando2].transform.position, 8f, __instance.navHit, __instance.AnomalyRandom, -1);
+                        Vector3 randomNavMeshPositionInBoxPredictable = __instance.GetRandomNavMeshPositionInBoxPredictable(__instance.insideAINodes[rando2].transform.position, 8f, __instance.navHit, __instance.AnomalyRandom, -1, 1f);
                         Object.Instantiate(BatteriesMod.batteryItem.spawnPrefab, randomNavMeshPositionInBoxPredictable, Quaternion.identity, __instance.spawnedScrapContainer).GetComponent<NetworkObject>().Spawn();
                     }
                 }
